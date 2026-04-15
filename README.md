@@ -1,9 +1,5 @@
 CryptoMath Enigma: The Matrix Challenge
 
-![Technology](https://img.shields.io/badge/TechMERN_Stackemerald)
-![Course](https://img.shields.io/badge/CourseKalkulus_Lanjutblue)
-![Status](https://img.shields.io/badge/StatusDevelopmentorange)
-
 CryptoMath Enigma adalah aplikasi Capture The Flag (CTF) berbasis web yang menggabungkan konsep Kriptografi Klasik (Hill Cipher) dengan materi Kalkulus Lanjut & Aljabar Linear. Proyek ini dikembangkan oleh mahasiswa Informatika Universitas Siliwangi angkatan 2025 sebagai tugas besar mata kuliah Kalkulus Lanjut.
  Fitur Utama
  24 Level Tantangan: Dari pengenalan vektor dasar hingga dekripsi matriks 3x3 yang kompleks.
@@ -18,7 +14,7 @@ Struktur Folder (Monorepo)
 
 text
 cryptomathenigma/
-├── database/             File .sql untuk skema database dan soal CTF
+├── cryptomath_db.sql             File .sql untuk skema database dan soal CTF
 ├── serverenigma/        Backend Node.js (API & WebSocket)
 └── clientenigma/        Frontend React (UI & Logic)
 
@@ -44,7 +40,7 @@ cd cryptomathenigma
 1. Buka aplikasi XAMPP dan klik Start pada modul Apache dan MySQL.
 2. Buka browser dan akses: http://localhost/phpmyadmin
 3. Buat database baru dengan nama persis: cryptomath_db
-4. Pilih database tersebut, masuk ke tab Import, lalu pilih dan unggah file database/cryptomath_db.sql yang ada di dalam folder proyek ini.
+4. Pilih database tersebut, masuk ke tab Import, lalu pilih dan unggah file cryptomath_db.sql yang ada di dalam folder proyek ini.
 5. Klik Go / Import.
 
  4. Setup & Menyalakan Server (Backend)
@@ -79,7 +75,7 @@ Buka terminal BARU lagi (biarkan terminal backend tetap menyala), lalu jalankan:
 bash
 cd clientenigma
 npm install
-npm run dev
+npm run dev -- --host
 
 (Aplikasi web sudah siap dimainkan! Tahan tombol Ctrl lalu klik link http://localhost:5173 di terminal untuk membuka browser).
 
