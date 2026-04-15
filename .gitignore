@@ -1,7 +1,4 @@
 node_modules/
-database/
-.env
-.env.local
 dist/
 build/
 npm-debug.log*
