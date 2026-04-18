@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-const PageContainer = styled.div`
+const PageContainer = styled.div` 
   min-height: 100vh;
   width: 100%;
   background-color: #08040f;
