@@ -75,7 +75,7 @@ Install library utama dan tipe data TypeScript (wajib agar tidak error merah)
     
 npm install express cors mysql2 socket.io
 
-npm install savedev typescript @types/express @types/cors @types/node tsx
+npm install --save-dev typescript @types/express @types/cors @types/node tsx
 
 Inisialisasi konfigurasi TypeScript
     
