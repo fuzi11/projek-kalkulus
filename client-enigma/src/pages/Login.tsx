@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -210,11 +211,41 @@ const SubmitButton = styled.button`
   }
 `;
 
+const ErrorText = styled.p`
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 1px;
+`;
+
 export default function Login() {
   const [npm, setNpm] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
+    
+    try {
+      const res = await fetch('http://localhost:3001/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ npm })
+      });
+      const data = await res.json();
+      
+      if (data.success) {
+        localStorage.setItem('user', JSON.stringify(data.user));
+        window.dispatchEvent(new Event('storage'));
+        navigate('/challenges');
+      } else {
+        setError(data.message);
+      }
+    } catch (err) {
+      setError('Koneksi ke server gagal.');
+    }
   };
 
   return (
@@ -261,6 +292,8 @@ export default function Login() {
               </InputRightIcon>
             </InputContainer>
           </div>
+
+          {error && <ErrorText>{error}</ErrorText>}
 
           <SubmitButton type="submit">
             INITIATE LOGIN 
