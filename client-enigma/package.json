@@ -12,9 +12,12 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.2",
     "@tailwindcss/vite": "^4.2.2",
+    "@types/styled-components": "^5.1.36",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "socket.io-client": "^4.8.3"
+    "react-router-dom": "^7.14.1",
+    "socket.io-client": "^4.8.3",
+    "styled-components": "^6.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
