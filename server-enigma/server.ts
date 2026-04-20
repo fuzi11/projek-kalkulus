@@ -101,4 +101,4 @@ io.on('connection', async (socket) => {
   socket.emit('update_leaderboard', await getLeaderboard());
 });
 
-server.listen(3001, '0.0.0.0', () => console.log('Engine Enigma Aktif di Port 3001'));
+server.listen(3001, '0.0.0.0', () => console.log('Server berjalan di http://localhost:3001'));
