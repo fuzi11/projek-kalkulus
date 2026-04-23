@@ -40,7 +40,7 @@ CREATE TABLE user_solved (
 -- SEEDING DATA (MEMASUKKAN DATA AWAL)
 -- ==========================================================
 
--- 4. Memasukkan Data Tim (Silakan tambahkan anggota ke-7 jika belum ada di list ini)
+
 INSERT INTO users (npm, name) VALUES
 ('257006111066', 'Fazlee Khayru Aozora'),
 ('257006111109', 'Fauzi Firmansyah'),
@@ -49,29 +49,128 @@ INSERT INTO users (npm, name) VALUES
 ('257006111107', 'Diwanti Najma Tsaqib'),
 ('257006111065', 'Salwa Salsabila');
 
--- 5. Memasukkan 24 Level Tantangan Kriptografi (Modulo 27)
-    INSERT INTO challenges (level, title, description, question, answer, points) VALUES
-(1, 'Vector Karakter (MOD 27)', 'Representasi teks ke dalam bentuk matriks angka.', 'Ubah teks "DATA SCIENCE" menjadi vektor angka dengan aturan: A=0, B=1, ..., Z=25, spasi=26!', '3 0 19 0 26 18 2 8 4 13 2 4', 10),
 
-(2, 'Determinan Matriks', 'Kalkulasi nilai determinan orde 2x2.', 'Hitung determinan dari matriks: [[4, 7], [2, 5]]!', '6', 15),
+   TRUNCATE TABLE challenges;
 
-(3, 'Enkripsi Matriks Kunci 2x2', 'Perkalian matriks kunci dengan vektor pesan (MOD 27).', 'Gunakan matriks kunci K = [[2, 3], [1, 4]]. Enkripsi vektor: [1, 2] (mod 27)!', '[8, 9]', 20),
+INSERT INTO challenges (level, title, description, question, answer, points) VALUES
 
-(4, 'Enkripsi Hill Cipher 2x2', 'Enkripsi blok pesan teks ke teks sandi.', 'Gunakan kunci K = [[3, 2], [2, 5]]. Plaintext: HELLOWORLD. Tuliskan Ciphertext-nya!', 'CH BX FD WF MK', 25),
+(1, 'Vector Karakter (MOD 27)',
+'Konversi teks ke angka',
+'Ubah "DATA SCIENCE" ke vektor angka. Format jawaban: angka dipisah spasi (contoh: 1 2 3)',
+'3 0 19 0 26 18 2 8 4 13 2 4',
+10),
 
-(5, 'Dekripsi Hill Cipher 2x2', 'Pengembalian teks sandi ke pesan asli (MOD 27).', 'Diketahui ciphertext: LWLPJJTR. Gunakan kunci K = [[3, 2], [2, 5]]. Cari plaintext!', 'BERHASIL', 35),
+(2, 'Determinan Matriks',
+'Hitung determinan',
+'K=[[5,2],[3,7]]. Format jawaban: det=..., mod27=..., invertible/tidak (contoh: det=10, mod27=10, invertible)',
+'det=29, mod27=2, invertible',
+15),
 
-(6, 'Hill Cipher + Deret Tak Hingga', 'Kombinasi deret geometri dengan matriks kriptografi.', 'Diketahui K = [[a, b], [c, d]]. a = deret (a=2, r=1/2), b = deret (a=3, r=1/3), c = deret (a=4, r=1/2), d = deret (a=5, r=1/5). Enkripsi vektor [1,2] (mod 27)!', '[14, 20]', 40),
+(3, 'Enkripsi 2x2',
+'Hill Cipher dasar',
+'K=[[3,3],[2,5]], plaintext HI. Format jawaban: huruf kapital tanpa spasi (contoh: AB)',
+'TC',
+20),
 
-(7, 'Enkripsi Hill Cipher 3x3', 'Enkripsi pesan dengan matriks tingkat lanjut.', 'Gunakan K = [[2, 2, 1], [1, 2, 1], [1, 1, 2]]. Plaintext: CAT. Tulis huruf hasil enkripsinya!', 'X V N', 45),
+(4, 'Enkripsi HELLOWORLD',
+'Enkripsi blok',
+'K=[[7,8],[11,11]], plaintext HELLOWORLD. Format: huruf kapital tanpa spasi',
+'ZEBBWGABEX',
+25),
 
-(8, 'Dekripsi Hill Cipher 3x3 + Deret', 'Dekripsi tingkat tinggi dengan pemecahan matriks deret.', 'K = [[a, 1, 1], [1, b, 1], [1, 1, c]]. a = deret(2, 1/2), b = deret(3, 1/3), c = deret(4, 1/2). Ciphertext: ZVN (mod 27). Cari plaintext!', 'COD', 50),
+(5, 'Dekripsi 2x2',
+'Dekripsi',
+'K=[[3,3],[2,5]], ciphertext ZEBB. Format: huruf kapital tanpa spasi',
+'HELP',
+30),
 
-(9, 'Validasi Matriks Hill Cipher', 'Verifikasi eksistensi invers matriks (MOD 27).', 'Apakah matriks K = [[1, 2], [3, 5]] valid untuk Hill Cipher (mod 27)? (Ketik: VALID / TIDAK VALID)', 'VALID', 25),
+(6, 'Cari Matriks Kunci',
+'Sistem persamaan',
+'HI → XP. Format jawaban: a b c d (contoh: 1 2 3 4)',
+'23 23 15 20',
+40),
 
-(10, 'Invers Matriks Modulo 27', 'Kalkulasi matriks kunci balikan.', 'Tentukan invers dari matriks K = [[3, 2], [2, 5]] (mod 27)!', '[[25, 17], [17, 15]]', 30),
+(7, 'Enkripsi 3x3',
+'Hill Cipher lanjut',
+'K=[[2,4,5],[9,2,1],[3,17,7]], plaintext CATDOG. Format: huruf kapital tanpa spasi',
+'FINVYB',
+45),
 
-(11, 'Dekripsi Vektor 2x2', 'Translasi matriks invers dengan vektor angka.', 'Gunakan Invers K = [[25, 17], [17, 15]]. Dekripsi ciphertext [9, 3] dan ubah ke huruf!', 'G J', 30),
+(8, 'Dekripsi + Cari Matriks 3x3',
+'Key finding',
+'ACT → POH, dekripsi POHPOH. Format: huruf kapital tanpa spasi',
+'ACTACT',
+50),
 
-(12, 'Protokol Dekripsi Final', 'Pengembalian blok ciphertext ke plaintext pesan utama.', 'Gunakan Invers K = [[25, 17], [17, 15]]. Dekripsi ciphertext berikut (mod 27) lalu ubah ke huruf: [2, 7] [9, 3] [3, 7] [20, 1]!', 'HE GJ FV EE', 60);
->>>>>>> 94ace3f45d923078e7d7494ddd88c2cb153a5193
+(9, 'Enkripsi Berlapis',
+'Double cipher',
+'K1 dan K2 diberikan. Format jawaban: huruf kapital tanpa spasi',
+'HASILVALID',
+50),
+
+(10, 'Dekripsi Berlapis',
+'Double dekripsi',
+'Dekripsi hasil soal 9. Format: huruf kapital tanpa spasi',
+'DATA',
+50),
+
+(11, 'Matriks Tidak Invertible',
+'Analisis',
+'Perbaiki K. Format jawaban: a b c d',
+'7 9 3 12',
+35),
+
+(12, 'Known Plaintext Attack',
+'Cari kunci',
+'HE → XM. Format jawaban: a b c d',
+'7 8 11 11',
+45),
+
+(13, 'Multi Blok + Padding',
+'Enkripsi panjang',
+'CRYPTOGRAPHY. Format: huruf kapital tanpa spasi',
+'CIPHERTEXTVALID',
+55),
+
+(14, 'Determinan 3x3',
+'Analisis matriks',
+'Tentukan apakah invertible. Format: invertible / tidak',
+'invertible',
+40),
+
+(15, 'Enkripsi 3x3 + Noise',
+'Tambahan noise',
+'SECURITY. Format: huruf kapital tanpa spasi',
+'CIPHERTEXTNOISE',
+60),
+
+(16, 'Dekripsi Noise',
+'Noise removal',
+'Dekripsi hasil soal 15. Format: huruf kapital tanpa spasi',
+'SECURITY',
+60),
+
+(17, 'Sistem Persamaan',
+'Constraint',
+'HI → AB. Format jawaban: tulis "banyak solusi"',
+'banyak solusi',
+65),
+
+(18, 'Hill Cipher + Permutasi',
+'Enkripsi + shuffle',
+'DATA. Format: huruf kapital tanpa spasi',
+'CIPHERTEXTPERM',
+50),
+
+(19, 'Reverse Permutasi',
+'Dekripsi',
+'Balikkan soal 18. Format: huruf kapital tanpa spasi',
+'DATA',
+50),
+
+(20, 'Kombinasi 2x2 dan 3x3',
+'Hybrid',
+'HELLOCRYPTO. Format: huruf kapital tanpa spasi',
+'CIPHERTEXTKOMBINASI',
+70);
+   >>>>>>> 94ace3f45d923078e7d7494ddd88c2cb153a5193
