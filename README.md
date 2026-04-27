@@ -1,19 +1,4 @@
-CryptoMath Enigma: The Matrix Challenge
-
-CryptoMath Enigma adalah aplikasi Capture The Flag (CTF) berbasis web yang menggabungkan konsep Kriptografi Klasik (Hill Cipher) dengan materi Kalkulus Lanjut & Aljabar Linear. Proyek ini dikembangkan oleh mahasiswa Informatika Universitas Siliwangi angkatan 2025 sebagai tugas besar mata kuliah Kalkulus Lanjut.
-
-Fitur Utama
- 
-24 Level Tantangan: Dari pengenalan vektor dasar hingga dekripsi matriks 3x3 yang kompleks.
- 
-RealTime Leaderboard: Papan peringkat yang diperbarui secara instan menggunakan Socket.io saat pemain berhasil menjawab soal.
- 
-Laboratory Visualizer: Alat bantu interaktif untuk menghitung perkalian matriks, determinan, dan invers dalam Modulo 27.
- 
-Level Locking System: Pemain tidak dapat mengakses level tinggi sebelum menyelesaikan level dasar.
- 
-Smart Validator: Sistem cerdas yang memvalidasi jawaban meskipun terdapat perbedaan spasi atau kapitalisasi.
-
+Cara set up CryptoMath Enigma
 
 Struktur Folder (Monorepo)
 
@@ -65,61 +50,39 @@ Klik Go / Import.
 
  4. Setup & Menyalakan Server (Backend)
     
-Buka terminal baru di VS Code (Ctrl + ~), lalu jalankan perintah berurutan ini:
+Buka terminal baru (disarankan cmd)
 
-bash
+bash/cmd
 
 cd server-enigma
 
 Install library utama dan tipe data TypeScript (wajib agar tidak error merah)
+
+npm install
     
 npm install express cors mysql2 socket.io
 
 npm install --save-dev typescript @types/express @types/cors @types/node tsx
 
-Inisialisasi konfigurasi TypeScript
-    
-npx tsc init
-
-
-Konfigurasi Shortcut:
-
-Buka file serverenigma/package.json dan tambahkan script ini agar server otomatis merestart saat kode diubah:
-
-json
-
-"scripts": {
-  "dev": "tsx watch server.ts"
-}
-
-
 Nyalakan Server:
-
-bash
 
 npx tsx server.ts
 
-(Jika berhasil, akan muncul tulisan Engine Enigma Aktif di Port 3001 di terminal).
 
  5. Setup & Menyalakan Antarmuka (Frontend)
     
 Buka terminal BARU lagi (biarkan terminal backend tetap menyala), lalu jalankan:
 
-bash
+bash/cmd
 
 cd client-enigma
 
+npm install react-router-dom
+ 
 npm install
 
 npm run dev -- --host
 
 (Aplikasi web sudah siap dimainkan! Tahan tombol Ctrl lalu klik link http://localhost:5173 di terminal untuk membuka browser).
-
- ateri Pembelajaran Terkait
-Aplikasi ini secara native mengimplementasikan teori dari mata kuliah Kalkulus Lanjut:
- Operasi Baris Elementer (OBE)
- Determinan Matriks (Metode Sarrus & Kofaktor)
- Adjoin & Invers Matriks Modulo 27
- Aritmatika Modulo (n \pmod{27})
 
 
